@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <style>
+        p {
+            width: 98%;
+        }
+
+        #btn-dlt {
+            margin-top: 20px;
+        }
+
+        .eb {
+            margin-top: 20px;
+        }
+    </style>
+
+    <body>
+        <p>{{ entry_content|safe }}</p>
+        <a href=/edit/{{ entry_title }} role="button" class="btn btn-outline-info btn-sm eb">Edit Entry</a>
+        <form action={% url 'wiki:delete' %}>
+            <button type="submit" id="btn-dlt" class="btn btn-outline-danger btn-sm" name="d" value="{{ entry_title }}">Delete Entry</button>
+        </form>
+    </body>
+    
+    
+{% endblock %}

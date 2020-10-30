@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+
+    <body>
+        {% if title != "no_title" %}
+            <h1>Showing results for "{{ entry_title }}"</h1>
+            <hr>
+            <ul>
+                {% for entry in entries %}
+                    <li>
+                        <a type="submit" href=/wiki/{{ entry }} class="btn btn-link btn-small">{{ entry }}</a>
+                    </li>
+                    {% empty %}
+                    <h4 style="color: rgba(255, 47, 47, 0.767);">No Similar Results.</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+    
+{% endblock %}
